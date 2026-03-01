@@ -13,3 +13,4 @@ func _process(delta: float) -> void:
 
 func _on_player_dead() -> void:
 	visible = true
+	get_tree().paused = true

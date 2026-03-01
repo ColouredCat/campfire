@@ -13,3 +13,4 @@ func _process(delta: float) -> void:
 func _on_win_body_entered(body: Node2D) -> void:
 	visible = true
 	print("win")
+	get_tree().paused = true
