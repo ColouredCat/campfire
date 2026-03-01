@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4cm1cg6r50v6"]
+
+[ext_resource type="Texture2D" uid="uid://csjpd7qk4rqhr" path="res://sprites/Fishset.png" id="1_8l5qy"]
+[ext_resource type="Script" uid="uid://p6e4525cioyn" path="res://scripts/shark.gd" id="1_v5iaq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5iaq"]
+atlas = ExtResource("1_8l5qy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po4rd"]
+atlas = ExtResource("1_8l5qy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_inbs7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5iaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po4rd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f40hg"]
+size = Vector2(66, 44)
+
+[node name="Shark" type="RigidBody2D"]
+texture_filter = 1
+gravity_scale = 0.0
+script = ExtResource("1_v5iaq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_inbs7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_f40hg")

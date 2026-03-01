@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-
-var SPEED = 300.0
-var JUMP_VELOCITY = -400.0
+@export var SPEED = 300.0
+@export var JUMP_VELOCITY = -500.0
+@export var WATER_FACTOR = 3
 var GRAVITY = 1
 var IS_WET = false
+var lives = 3
+var hit = false
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("idle")
@@ -25,6 +27,15 @@ func animate():
 		$AnimatedSprite2D.play("idle")
 		$AnimatedSprite2D.flip_h = false
 		
+		
+func collisions():
+	for i in get_slide_collision_count():
+		if get_slide_collision(i).get_collider().is_in_group("enemy"):
+			print("bite")
+			hit = true
+			lives -= 1
+			$HitTimer.start()
+			return
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -45,16 +56,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
 	
 	animate()
 	move_and_slide()
-
+	if not hit:
+		collisions()
 
 func _on_water_body_entered(body: Node2D) -> void:
 	print("in")
 	if body.is_in_group("player"):
-		GRAVITY = 0.1
+		GRAVITY = WATER_FACTOR
 		IS_WET = true
 
 
@@ -63,3 +74,12 @@ func _on_water_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GRAVITY = 1
 		IS_WET = false
+
+
+func _on_hit_timer_timeout() -> void:
+	hit = false
+	$AnimatedSprite2D.visible = true
+
+func _on_flash_timer_timeout() -> void:
+	if hit:
+		$AnimatedSprite2D.visible = !$AnimatedSprite2D.visible

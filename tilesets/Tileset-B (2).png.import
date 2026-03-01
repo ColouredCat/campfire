@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmsunywnrf3cr"
-path="res://.godot/imported/icon.svg-3175ba368487e4ef6cc399687003abda.ctex"
+uid="uid://bqlnc0y2l23in"
+path="res://.godot/imported/Tileset-B (2).png-8f84177a91cb3ed320dbf05913bf1f9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-3175ba368487e4ef6cc399687003abda.ctex"]
+source_file="res://tilesets/Tileset-B (2).png"
+dest_files=["res://.godot/imported/Tileset-B (2).png-8f84177a91cb3ed320dbf05913bf1f9c.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

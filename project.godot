@@ -13,13 +13,13 @@ config_version=5
 config/name="campfire"
 run/main_scene="uid://bsamhpa1p580e"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://scenes/icon.svg"
 
 [global_group]
 
 water=""
 ground=""
 player=""
+enemy=""
 
 [input]
 

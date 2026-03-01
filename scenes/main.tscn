@@ -1,8 +1,22 @@
-[gd_scene load_steps=9 format=4 uid="uid://bsamhpa1p580e"]
+[gd_scene load_steps=12 format=4 uid="uid://bsamhpa1p580e"]
 
 [ext_resource type="PackedScene" uid="uid://ccoaqdioidrv7" path="res://scenes/player.tscn" id="1_0wfyh"]
-[ext_resource type="Texture2D" uid="uid://gi0538rw2jeq" path="res://tilesets/test.png" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bcid3rf5tiid" path="res://tilesets/tileset-A.png" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://bqlnc0y2l23in" path="res://tilesets/Tileset-B (2).png" id="2_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://42qtnvc342dy" path="res://tilesets/Tileset-A.png" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://b4cm1cg6r50v6" path="res://scenes/shark.tscn" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://b3jf3j1hu82y3" path="res://sprites/Background.png" id="5_tbgi4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tefeu"]
+texture = ExtResource("2_tbgi4")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_tbgi4"]
+physics_layer_0/collision_layer = 1
+sources/5 = SubResource("TileSetAtlasSource_tefeu")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
 texture = ExtResource("2_0wfyh")
@@ -25,50 +39,92 @@ texture = ExtResource("2_0wfyh")
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
-texture = ExtResource("1_o5qli")
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_sugp2"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_0wfyh")
-sources/1 = SubResource("TileSetAtlasSource_sugp2")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
-texture = ExtResource("1_o5qli")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6xl0"]
+texture = ExtResource("3_tefeu")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_tbgi4"]
+[sub_resource type="TileSet" id="TileSet_sugp2"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_jyhfs")
+sources/0 = SubResource("TileSetAtlasSource_0wfyh")
+sources/2 = SubResource("TileSetAtlasSource_o6xl0")
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
 
-[node name="Level" type="TileMapLayer" parent="." groups=["ground"]]
-scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAABAAYAAAABAAAAAAACAAYAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAUAAAABAAAAAAAKAAUAAAABAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAAAAAYAAAAAAAAAAAACAAUAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_sugp2")
+[node name="Background3" type="TextureRect" parent="."]
+offset_left = 1015.0
+offset_top = -7.0
+offset_right = 1525.0
+offset_bottom = 530.3215
+texture = ExtResource("5_tbgi4")
+
+[node name="Background2" type="TextureRect" parent="."]
+offset_left = 505.0
+offset_top = -7.0
+offset_right = 1015.0
+offset_bottom = 530.3215
+texture = ExtResource("5_tbgi4")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 506.0
+offset_bottom = 530.3215
+texture = ExtResource("5_tbgi4")
 
 [node name="Water" type="Area2D" parent="."]
 scale = Vector2(4, 4)
 
 [node name="Tilemap" type="TileMapLayer" parent="Water" groups=["water"]]
-tile_map_data = PackedByteArray("AAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAADAAYAAAABAAAAAAAEAAYAAAABAAAAAAAFAAYAAAABAAAAAAAGAAYAAAABAAAAAAAHAAYAAAABAAAAAAAIAAYAAAABAAAAAAAJAAYAAAABAAAAAAAKAAYAAAABAAAAAAALAAYAAAABAAAAAAAMAAYAAAABAAAAAAANAAYAAAABAAAAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAAQAAcAAAABAAAAAAARAAgAAAABAAAAAAARAAcAAAABAAAAAAARAAYAAAABAAAAAAARAAkAAAABAAAAAAAQAAkAAAABAAAAAAAPAAkAAAABAAAAAAAOAAkAAAABAAAAAAANAAkAAAABAAAAAAAMAAkAAAABAAAAAAALAAkAAAABAAAAAAAKAAkAAAABAAAAAAAJAAkAAAABAAAAAAAIAAkAAAABAAAAAAAHAAkAAAABAAAAAAAGAAkAAAABAAAAAAAFAAkAAAABAAAAAAAEAAkAAAABAAAAAAADAAkAAAABAAAAAAACAAkAAAABAAAAAAABAAkAAAABAAAAAAAAAAkAAAABAAAAAAAAAAgAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAFAAcAAAABAAAAAAABAAgAAAABAAAAAAACAAgAAAABAAAAAAADAAgAAAABAAAAAAAEAAgAAAABAAAAAAAGAAcAAAABAAAAAAAFAAgAAAABAAAAAAAGAAgAAAABAAAAAAAHAAgAAAABAAAAAAAIAAcAAAABAAAAAAAJAAcAAAABAAAAAAAKAAcAAAABAAAAAAAJAAgAAAABAAAAAAAIAAgAAAABAAAAAAAHAAcAAAABAAAAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAALAAgAAAABAAAAAAAKAAgAAAABAAAAAAAMAAgAAAABAAAAAAANAAgAAAABAAAAAAAOAAgAAAABAAAAAAAOAAcAAAABAAAAAAAPAAcAAAABAAAAAAAPAAgAAAABAAAAAAANAAcAAAABAAAAAAAQAAgAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAFAAgABQAAAAAAAAAGAAgABQAAAAAAAAAHAAgABQAAAAAAAAAKAAgABQAAAAAAAAALAAgABQAAAAAAAAAIAAgABQAAAAAAAAAJAAgABQAAAAAAAAAMAAgABQAAAAAAAAANAAgABQAAAAAAAAAFAAkABQABAAAAAAAGAAkABQABAAAAAAAHAAkABQABAAAAAAAIAAkABQABAAAAAAAJAAkABQABAAAAAAAKAAkABQABAAAAAAALAAkABQABAAAAAAAMAAkABQABAAAAAAANAAkABQABAAAAAAANAAoABQABAAAAAAAMAAoABQABAAAAAAALAAoABQABAAAAAAAKAAoABQABAAAAAAAJAAoABQABAAAAAAAIAAoABQABAAAAAAAHAAoABQABAAAAAAAGAAoABQABAAAAAAAFAAoABQABAAAAAAA=")
 tile_set = SubResource("TileSet_tbgi4")
 collision_enabled = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water"]
-polygon = PackedVector2Array(208.5, 95.5, 208.75, 81.5, 287.75, 81.5, 287.25, 159.75, 0.75, 160, 0.25, 112.75, 47.75, 111.75, 48.75, 96.75)
+polygon = PackedVector2Array(165.5, 129, 192, 129, 224.25, 129, 224, 174.25, 80.25, 175.75, 80, 129, 100.75, 129.5, 130.75, 129.25)
+
+[node name="Level" type="TileMapLayer" parent="." groups=["ground"]]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAEAAQAAAACAAAAAAAEAAUAAAACAAEAAAAEAAYAAAACAAIAAAAEAAcAAgABAAAAAAAEAAgAAgAEAAAAAAAEAAkAAgAEAAEAAAAEAAoAAgAEAAEAAAADAAUAAAABAAEAAAACAAUAAAABAAEAAAABAAUAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAIAAAABAAYAAAABAAIAAAACAAYAAAABAAIAAAADAAYAAAABAAIAAAADAAcAAgABAAAAAAACAAcAAgABAAAAAAABAAcAAgABAAAAAAAAAAcAAgABAAAAAAAAAAgAAgABAAEAAAABAAgAAgABAAEAAAACAAgAAgABAAEAAAADAAgAAgABAAEAAAADAAkAAAABAAIAAAACAAkAAAABAAIAAAABAAkAAAABAAIAAAAAAAkAAAABAAIAAAAAAAoAAAABAAIAAAABAAoAAAABAAIAAAACAAoAAAABAAIAAAADAAoAAAABAAIAAAAIAAUAAAAAAAAAAAAJAAUAAAABAAAAAAAKAAUAAAACAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAABAAAAAAAQAAQAAAABAAAAAAARAAQAAAABAAAAAAASAAQAAAABAAAAAAAOAAUAAAAAAAEAAAAPAAUAAAABAAEAAAAQAAUAAAABAAEAAAARAAUAAAABAAEAAAASAAUAAAABAAEAAAAOAAYAAgAAAAIAAAAPAAYAAgABAAIAAAAQAAYAAgABAAIAAAARAAYAAgABAAIAAAASAAYAAgABAAIAAAAOAAcAAgABAAAAAAAOAAgAAgADAAAAAAAOAAkAAgADAAEAAAAOAAoAAgADAAEAAAAPAAcAAgABAAAAAAAQAAcAAgABAAAAAAARAAcAAgABAAAAAAASAAcAAgABAAAAAAASAAgAAgABAAEAAAARAAgAAgABAAEAAAAQAAgAAgABAAEAAAAPAAgAAgABAAEAAAAPAAkAAgABAAIAAAAQAAkAAgABAAIAAAARAAkAAgABAAIAAAASAAkAAgABAAIAAAASAAoAAgABAAIAAAARAAoAAgABAAIAAAAQAAoAAgABAAIAAAAPAAoAAgABAAIAAAAFAAcAAgACAAAAAAANAAcAAgAAAAAAAAAFAAsAAgAAAAMAAAAGAAsAAgAAAAMAAAAHAAsAAgAAAAMAAAAIAAsAAgAAAAMAAAAJAAsAAgAAAAMAAAAKAAsAAgAAAAMAAAALAAsAAgAAAAMAAAAMAAsAAgAAAAMAAAANAAsAAgAAAAMAAAAEAAsAAgABAAIAAAADAAsAAgABAAIAAAACAAsAAgABAAIAAAABAAsAAgABAAIAAAAAAAsAAgABAAIAAAAOAAsAAgABAAIAAAAPAAsAAgABAAIAAAARAAsAAgABAAIAAAAQAAsAAgABAAIAAAASAAsAAgABAAIAAAATAAsAAgABAAIAAAATAAoAAgABAAIAAAATAAkAAgABAAIAAAATAAgAAgABAAIAAAATAAcAAgABAAIAAAATAAYAAgABAAIAAAATAAUAAgABAAIAAAATAAQAAgABAAIAAAATAAMAAgABAAIAAAAUAAsAAgABAAIAAAAUAAoAAgABAAIAAAAUAAkAAgABAAIAAAAUAAgAAgABAAIAAAAUAAcAAgABAAIAAAAUAAYAAgABAAIAAAAUAAUAAgABAAIAAAAUAAQAAgABAAIAAAAUAAMAAgABAAIAAAAUAAIAAgABAAIAAAATAAIAAgABAAIAAAATAAEAAgABAAIAAAAUAAEAAgABAAIAAAAUAAAAAgABAAIAAAATAAAAAgABAAIAAAATAP//AgABAAIAAAAUAP//AgABAAIAAAASAP//AgABAAIAAAARAP//AgABAAIAAAAQAP//AgABAAIAAAAPAP//AgABAAIAAAAOAP//AgABAAIAAAANAP//AgABAAIAAAAMAP//AgABAAIAAAALAP//AgABAAIAAAAKAP//AgABAAIAAAAJAP//AgABAAIAAAAIAP//AgABAAIAAAAHAP//AgABAAIAAAAGAP//AgABAAIAAAAFAP//AgABAAIAAAAEAP//AgABAAIAAAADAP//AgABAAIAAAACAP//AgABAAIAAAABAP//AgABAAIAAAAAAP//AgABAAIAAAD/////AgABAAIAAAD//wAAAgABAAIAAAD//wEAAgABAAIAAAD+/wIAAgABAAIAAAD+/wMAAgABAAIAAAD//wIAAgABAAIAAAD//wMAAgABAAIAAAD//wQAAgABAAIAAAD//wUAAgABAAIAAAD//wYAAgABAAIAAAD//wcAAgABAAIAAAD//wgAAgABAAIAAAD//wkAAgABAAIAAAD//woAAgABAAIAAAD//wsAAgABAAIAAAD+/wsAAgABAAIAAAD+/woAAgABAAIAAAD+/wkAAgABAAIAAAD+/wgAAgABAAIAAAD+/wcAAgABAAIAAAD+/wYAAgABAAIAAAD+/wUAAgABAAIAAAD+/wQAAgABAAIAAAD+/wEAAgABAAIAAAD+/wAAAgABAAIAAAD+////AgABAAIAAAA=")
+tile_set = SubResource("TileSet_sugp2")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_0wfyh")]
-position = Vector2(480, 193)
+position = Vector2(171, 222)
+
+[node name="Shark" parent="." groups=["enemy"] instance=ExtResource("4_jyhfs")]
+position = Vector2(628, 641)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 400)
 
 [connection signal="body_entered" from="Water" to="Player" method="_on_water_body_entered"]
+[connection signal="body_entered" from="Water" to="Shark" method="_on_water_body_entered"]
 [connection signal="body_exited" from="Water" to="Player" method="_on_water_body_exited"]
+[connection signal="body_exited" from="Water" to="Shark" method="_on_water_body_exited"]
