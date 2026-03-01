@@ -3,7 +3,7 @@ signal dead
 signal scr
 
 @export var SPEED = 300.0
-@export var JUMP_VELOCITY = -500.0
+@export var JUMP_VELOCITY = -600.0
 @export var WATER_FACTOR = 3
 var GRAVITY = 1
 var IS_WET = false

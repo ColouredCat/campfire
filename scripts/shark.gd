@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var SPEED = 0.8
+@export var SPEED = 0.6
 var wet = true
 
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +12,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the prtreevious frame.
 func _physics_process(delta: float) -> void:
 	if not wet:
-		apply_central_force(Vector2(0, 2000))
+		apply_central_force(Vector2(0, 15000))
 	
 	var frog = get_tree().get_nodes_in_group("player")[0].position
 	
@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.flip_h = true
 		
-	apply_central_force(-movement)
+	apply_central_force(-(movement * SPEED))
 
 
 func _on_water_body_exited(body: Node2D) -> void:
