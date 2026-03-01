@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3jm48uormcuo"]
+
+[ext_resource type="Texture2D" uid="uid://c8n2e1nqkukaf" path="res://sprites/Bug.png" id="1_djddo"]
+[ext_resource type="Script" uid="uid://dt2wstt3vrlii" path="res://scripts/fly.gd" id="1_xr3pu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr3pu"]
+atlas = ExtResource("1_djddo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lkvx"]
+atlas = ExtResource("1_djddo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sgyng"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr3pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lkvx")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qovp"]
+size = Vector2(96, 62)
+
+[node name="Fly" type="RigidBody2D"]
+texture_filter = 1
+script = ExtResource("1_xr3pu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_sgyng")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0qovp")

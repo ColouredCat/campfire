@@ -20,6 +20,8 @@ water=""
 ground=""
 player=""
 enemy=""
+fire=""
+lives=""
 
 [input]
 

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://d20y50y0tr8gp"]
+
+[ext_resource type="Texture2D" uid="uid://bjqgsvf7rledk" path="res://sprites/Firefly.png" id="1_k4n6k"]
+[ext_resource type="Script" uid="uid://fw7hkbp1vrir" path="res://scripts/firefly.gd" id="1_oqngd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqngd"]
+atlas = ExtResource("1_k4n6k")
+region = Rect2(0, 4, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjwvr"]
+atlas = ExtResource("1_k4n6k")
+region = Rect2(16, 4, 8, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4n6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqngd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjwvr")
+}],
+"loop": true,
+"name": &"flicker",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqngd"]
+size = Vector2(4.125, 2.125)
+
+[node name="Firefly" type="Area2D" groups=["fire"]]
+texture_filter = 1
+script = ExtResource("1_oqngd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_k4n6k")
+animation = &"flicker"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+scale = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_oqngd")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,6 @@
 extends CharacterBody2D
+signal dead
+signal scr
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -500.0
@@ -7,6 +9,7 @@ var GRAVITY = 1
 var IS_WET = false
 var lives = 3
 var hit = false
+var score = 0
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("idle")
@@ -34,10 +37,15 @@ func collisions():
 			print("bite")
 			hit = true
 			lives -= 1
+			get_tree().get_nodes_in_group("lives")[0].play(str(lives))
 			$HitTimer.start()
 			return
 
 func _physics_process(delta: float) -> void:
+	if lives == 0:
+		emit_signal("dead")
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta * GRAVITY
@@ -83,3 +91,9 @@ func _on_hit_timer_timeout() -> void:
 func _on_flash_timer_timeout() -> void:
 	if hit:
 		$AnimatedSprite2D.visible = !$AnimatedSprite2D.visible
+
+
+func _on_firefly_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		print("collide")
+		score += 1
