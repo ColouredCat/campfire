@@ -26,16 +26,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qovp"]
-size = Vector2(96, 62)
+size = Vector2(47, 32)
 
 [node name="Fly" type="RigidBody2D"]
 texture_filter = 1
 script = ExtResource("1_xr3pu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(6, 6)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_sgyng")
 animation = &"fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_0qovp")

@@ -1,13 +1,14 @@
 extends  RigidBody2D
 
 @export var SPEED = 1
-var wet = true
+var wet = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("fly")
 	$AnimatedSprite2D.flip_h = true
-
+	#add_collision_exception_with(get_tree().get_nodes_in_group(""))
 
 # Called every frame. 'delta' is the elapsed time since the prtreevious frame.
 func _physics_process(delta: float) -> void:
