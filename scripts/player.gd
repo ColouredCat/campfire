@@ -1,3 +1,4 @@
+
 extends CharacterBody2D
 signal dead
 signal scr
@@ -10,10 +11,12 @@ var IS_WET = false
 var lives = 3
 var hit = false
 var score = 0
+var is_dead = false
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("idle")
 	$AnimatedSprite2D.flip_h = false
+	$StartMarker.position = position
 	
 func animate():
 	if velocity.x > 0:
@@ -26,10 +29,6 @@ func animate():
 		$AnimatedSprite2D.flip_h = true
 		if velocity.y != 0:
 			$AnimatedSprite2D.play("jump")
-	elif velocity.x == 0:
-		$AnimatedSprite2D.play("idle")
-		$AnimatedSprite2D.flip_h = false
-		
 		
 func collisions():
 	for i in get_slide_collision_count():
@@ -39,11 +38,17 @@ func collisions():
 			lives -= 1
 			get_tree().get_nodes_in_group("lives")[0].play(str(lives))
 			$HitTimer.start()
+			if lives == 0:
+				die()
 			return
+			
+func die():
+	emit_signal("dead")
+	$ResetTimer.start()
+	is_dead = true
 
 func _physics_process(delta: float) -> void:
-	if lives == 0:
-		emit_signal("dead")
+	if is_dead:
 		return
 	
 	# Add the gravity.
@@ -64,10 +69,12 @@ func _physics_process(delta: float) -> void:
 		
 	if direction:
 		velocity.x = direction * SPEED
+		animate()
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(float(velocity.x), 0.01, SPEED)
+		$AnimatedSprite2D.play("idle")
+		$AnimatedSprite2D.flip_h = false
 	
-	animate()
 	move_and_slide()
 	if not hit:
 		collisions()
@@ -94,8 +101,15 @@ func _on_flash_timer_timeout() -> void:
 	if hit:
 		$AnimatedSprite2D.visible = !$AnimatedSprite2D.visible
 
-
 func _on_firefly_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("collide")
 		score += 1
+
+func _on_reset_timer_timeout() -> void:
+	position = $StartMarker.position
+	lives = 3
+	is_dead = false
+	hit = false
+	$AnimatedSprite2D.visible = true
+	get_tree().get_nodes_in_group("lives")[0].play(str(lives))
