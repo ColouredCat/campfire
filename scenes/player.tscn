@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccoaqdioidrv7"]
+[gd_scene load_steps=14 format=3 uid="uid://ccoaqdioidrv7"]
 
 [ext_resource type="Script" uid="uid://b0b7sslcwkv68" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cmgrabt42jkfk" path="res://sprites/Frogset-A.png" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://btmkdyou2o1o6" path="res://frog2.mp3" id="3_dqkch"]
+[ext_resource type="AudioStream" uid="uid://bukh2rrug43k0" path="res://frog.ogg" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -98,8 +100,15 @@ autostart = true
 [node name="StartMarker" type="Marker2D" parent="."]
 
 [node name="ResetTimer" type="Timer" parent="."]
-wait_time = 1.4
 one_shot = true
+
+[node name="Frog2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dqkch")
+autoplay = true
+parameters/looping = true
+
+[node name="Frog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qlg0r")
 
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

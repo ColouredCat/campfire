@@ -37,14 +37,16 @@ func collisions():
 			hit = true
 			lives -= 1
 			get_tree().get_nodes_in_group("lives")[0].play(str(lives))
-			$HitTimer.start()
 			if lives == 0:
 				die()
+			else:
+				$HitTimer.start()
 			return
 			
 func die():
 	emit_signal("dead")
 	$ResetTimer.start()
+	$Frog2.stop()
 	is_dead = true
 
 func _physics_process(delta: float) -> void:
@@ -113,3 +115,4 @@ func _on_reset_timer_timeout() -> void:
 	hit = false
 	$AnimatedSprite2D.visible = true
 	get_tree().get_nodes_in_group("lives")[0].play(str(lives))
+	$Frog2.play()
